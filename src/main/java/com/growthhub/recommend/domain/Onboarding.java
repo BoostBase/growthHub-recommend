@@ -1,16 +1,14 @@
 package com.growthhub.recommend.domain;
 
-import com.growthhub.recommend.domain.type.CompanySize;
-import com.growthhub.recommend.domain.type.MentorType;
-import com.growthhub.recommend.domain.type.Purpose;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -30,25 +28,18 @@ public class Onboarding {
     @Column(name = "user_id", nullable = false)
     private Long userId;
 
-    @Enumerated(EnumType.STRING)
-    private CompanySize companySize;
-
-    @Enumerated(EnumType.STRING)
-    private MentorType mentorType;
-
-    @Enumerated(EnumType.STRING)
-    private Purpose purpose;
-
-    @Column(name = "onboarding_detail")
-    private String onboardingDetail;
+    @OneToMany(mappedBy = "onboarding", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<OnboardingDetail> details;
 
     @Builder
-    public Onboarding(Long userId, CompanySize companySize, MentorType mentorType, Purpose purpose,
-                      String onboardingDetail) {
+    public Onboarding(Long userId) {
         this.userId = userId;
-        this.companySize = companySize;
-        this.mentorType = mentorType;
-        this.purpose = purpose;
-        this.onboardingDetail = onboardingDetail;
+    }
+
+    public void setDetails(List<OnboardingDetail> details) {
+        this.details = details;
+        for (OnboardingDetail detail : details) {
+            detail.enrollOnboarding(this); // OnboardingDetail의 onboarding 필드도 설정
+        }
     }
 }
