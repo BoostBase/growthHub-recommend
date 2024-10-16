@@ -40,7 +40,7 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	//openai
-	//implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
+	implementation 'org.springframework.ai:spring-ai-openai-spring-boot-starter'
 
 	//swagger
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
@@ -48,6 +48,9 @@ dependencies {
 	//kafka
 	implementation 'org.springframework.kafka:spring-kafka'
 	testImplementation 'org.springframework.kafka:spring-kafka-test'
+
+	//gpt
+	implementation 'io.github.flashvayne:chatgpt-spring-boot-starter:1.0.4'
 }
 
 dependencyManagement {
