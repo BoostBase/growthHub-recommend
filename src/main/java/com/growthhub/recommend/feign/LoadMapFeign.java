@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "roadmap-service")
+@FeignClient(name = "ROADMAP-SERVICE")
 public interface LoadMapFeign {
     @GetMapping("/mentors")
     ResponseEntity<ResponseTemplate<Object>> getRoadmapByUsers(

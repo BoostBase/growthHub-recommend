@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "user-service")
+@FeignClient(name = "USER-SERVICE")
 public interface UserFeign {
     @GetMapping("/recommend-user")
     ResponseEntity<List<Long>> getRecommendedUsers(@RequestParam String part);
