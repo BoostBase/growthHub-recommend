@@ -9,6 +9,6 @@ import java.util.List;
 
 @FeignClient(name = "USER-SERVICE")
 public interface UserFeign {
-    @GetMapping("/recommend-user")
+    @GetMapping("/api/users/recommend-user")
     ResponseEntity<List<Long>> getRecommendedUsers(@RequestParam String part);
 }
