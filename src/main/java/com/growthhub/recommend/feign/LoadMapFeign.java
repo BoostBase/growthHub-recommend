@@ -10,7 +10,7 @@ import java.util.List;
 
 @FeignClient(name = "ROADMAP-SERVICE")
 public interface LoadMapFeign {
-    @GetMapping("/api/roadmaps/mentors")
+    @GetMapping("/mentors")
     ResponseEntity<ResponseTemplate<Object>> getRoadmapByUsers(
             @RequestParam List<Long> userIds
     );
