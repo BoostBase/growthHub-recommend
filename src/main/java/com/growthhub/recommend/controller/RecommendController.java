@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RecommendController {
     private final AIService aiService;
 
-    @GetMapping
+    @GetMapping("/gpt")
     public ResponseEntity<ResponseTemplate<Object>> chat(@RequestParam("prompt") String prompt){
         return aiService.getResponse(prompt);
     }
